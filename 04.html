@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <button @click="reduce()">-</button><input type="text" v-model="num"><button @click="add()">+</button>
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data(){
+            return{
+                num:'1'
+            }
+        },
+        methods:{
+            add(index){
+                this.num=Number(this.num)+1;
+            },
+            reduce(index)
+            {
+                this.num=Number(this.num)-1;
+            }
+        },
+        watch:{
+           num(){
+               if(this.num<0){
+                   alert("不可以小于0!")
+                   this.num=1;
+               }else{
+                   return num;
+               }
+           }
+        }
+    })
+</script>
+</body>
+</html>

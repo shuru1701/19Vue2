@@ -1,0 +1,103 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .active {
+            background-color:lightsteelblue;
+        }
+
+        #app {
+            width: 800px;
+            height: 400px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+
+        }
+
+        .menuList {
+            width: 800px;
+            height: 60px;
+        }
+
+        ul {
+            width: 100%;
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: #717181;
+            font-size: 16px;
+            line-height: 60px;
+
+        }
+
+        ul li {
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tabCon {
+            width: 700px;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 14px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app" style="margin: 0 auto;">
+    <div class="menuList">
+        <ul>
+            <li v-for="(item,index) in list" :key="item.id" :class="{active:num==index}" @click="getNum(index)">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+    <div class="tabCon">
+        <div v-for='(itemCon,index) in tabContents' v-show="index == num" v-html="itemCon" >
+        </div>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data() {
+            return {
+                num: 0,
+                list: ["拼多多商城", "数码家电", "一元抢购","抽奖福利"],
+                tabContents: [
+                    "<ul style='width: 100%;'><li style='width: 50%'>时令生鲜</li><li>休闲零食</li><li>营养保健</li><li>粮油调味</li></ul>",
+                    "这是tab2",
+                    "这是tab3",
+                    "这是tab4"],
+                myclass:'blue'
+            }
+        },
+
+        methods: {
+            getNum(index) {
+                this.num = index;
+            }
+        }
+
+    })
+</script>
+
+</body>
+
+</html>
